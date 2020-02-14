@@ -217,6 +217,8 @@ github repo
 * Kimberly Wong, [kjowong](https://github.com/kjowong) | [@kjowong](https://twitter.com/kjowong) | [kjowong@gmail.com](kjowong@gmail.com)
 * Carrie Ybay, [hicarrie](https://github.com/hicarrie) | [@hicarrie_](https://twitter.com/hicarrie_)
 * Jared Heck, [jarehec](https://github.com/jarehec) | [@jarehec](https://twitter.com/jarehec)
+* Carlos Molano, [Carlos](https://github.com/cmmolanos1) | [@klichmola](https://twitter.com/klichmola)
+* Dilan Rincon, [Dilan](https://github.com/dilanrinconhbtn) | [@dilanDrin](https://twitter.com/dilanDrin)
 
 ## License
 
