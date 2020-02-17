@@ -1,6 +1,7 @@
 $(function () {
+  // Amenities popover
   const amenitiesDict = {};
-  $('input[type="checkbox"]').click(function () {
+  $('.amenities .popover li input[type="checkbox"]').click(function () {
     if ($(this).is(':checked')) {
       amenitiesDict[$(this).data('id')] = $(this).data('name');
     } else if ($(this).is(':not(:checked)')) {
@@ -11,6 +12,38 @@ $(function () {
       $('div.amenities > h4').html('&nbsp;');
     }
   });
+  // States-Cities Popover
+  const locationsDict = {};
+  const statesDict = {};
+  $('.locations .popover li input[type="checkbox"]').click(function () {
+    if ($(this).is(':checked')) {
+      statesDict[$(this).data('id')] = $(this).data('name');
+      locationsDict[$(this).data('id')] = $(this).data('name');
+    } else if ($(this).is(':not(:checked)')) {
+      delete statesDict[$(this).data('id')];
+      delete locationsDict[$(this).data('id')];
+    }
+    $('div.locations > h4').text(Object.values(locationsDict).join(', '));
+    if (Object.keys(locationsDict).length === 0) {
+      $('div.locations > h4').html('&nbsp;');
+    }
+  });
+
+  const citiesDict = {};
+  $('.locations .popover li ul li input[type="checkbox"]').click(function () {
+    if ($(this).is(':checked')) {
+      citiesDict[$(this).data('id')] = $(this).data('name');
+      locationsDict[$(this).data('id')] = $(this).data('name');
+    } else if ($(this).is(':not(:checked)')) {
+      delete citiesDict[$(this).data('id')];
+      delete locationsDict[$(this).data('id')];
+    }
+    $('div.locations > h4').text(Object.values(locationsDict).join(', '));
+    if (Object.keys(locationsDict).length === 0) {
+      $('div.locations > h4').html('&nbsp;');
+    }
+  });
+
   $.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
     if (status === 'success') {
       if (data.status === 'OK') {
@@ -61,7 +94,7 @@ $(function () {
     $.ajax({
       type: 'POST',
       url: 'http://0.0.0.0:5001/api/v1/places_search/',
-      data: JSON.stringify({ amenities: Object.keys(amenitiesDict) }),
+      data: JSON.stringify({ amenities: Object.keys(amenitiesDict), states: Object.keys(statesDict), cities: Object.keys(citiesDict) }),
       dataType: 'json',
       contentType: 'application/json',
       success: function (data) {
